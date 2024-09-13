@@ -1,4 +1,4 @@
-name: 部署示例项目到 GitHub Pages
+name: deploy example
 
 on:
   push:
@@ -22,16 +22,25 @@ jobs:
         with:
           node-version: '16'
 
+      - name: 获取 yarn 缓存目录路径
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+
+      - name: 缓存 yarn 依赖
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
       - name: 安装依赖
         run: |
-          npm ci
-          cd packages/example
-          npm ci
+          yarn install
 
       - name: 构建示例项目
         run: |
-          cd packages/example
-          npm run build
+          yarn run deploy
 
       - name: 设置 Pages
         uses: actions/configure-pages@v3
