@@ -1,19 +1,21 @@
-<h1 align="center"> vue3-smooth-dnd </h1>
+<h1 align="center"> vue-smooth-dnd-next </h1>
 
 <p align="center">
   Vue 3 Wrapper of smooth-dnd library.
   <br/>
-  <a href="https://gilnd.github.io/vue3-smooth-dnd" target="__blank"><b>Live demo</b></a>
+  <a href="https://github.com/zl0110/vue-smooth-dnd-next" target="__blank"><b>Live demo</b></a>
 </p>
 
-> NOTE: This is a Vue 3 wrapper over [smooth-dnd](https://github.com/kutlugsahin/smooth-dnd) library. It's a fork of the already done [vue2 wrapper](https://github.com/kutlugsahin/vue-smooth-dnd) done by the original author of the library.
+Forked from <a href="https://github.com/gilnd/vue3-smooth-dnd">vue3-smooth-dnd</a>, **fixed the memory leak issue**.
 
-All the [documentation](https://github.com/kutlugsahin/vue-smooth-dnd/blob/master/README.md) for the Vue 2 version works with this [package](https://www.npmjs.com/package/vue3-smooth-dnd) version too!
+> This Vue 3 wrapper for [smooth-dnd](https://github.com/kutlugsahin/smooth-dnd) is forked from the original author's [Vue 2 wrapper](https://github.com/kutlugsahin/vue-smooth-dnd) and fixes the memory leak issue.
+
+All the [documentation](https://github.com/kutlugsahin/vue-smooth-dnd/blob/master/README.md) for the Vue 2 version works with this [package](https://www.npmjs.com/package/vue-smooth-dnd-next) version too!
     
 ## Install
 
 ```bash
-yarn add vue3-smooth-dnd
+yarn add vue-smooth-dnd-next
 ```
 
 ## Usage
@@ -33,7 +35,7 @@ yarn add vue3-smooth-dnd
 </template>
 
 <script>
-import { Container, Draggable } from "vue3-smooth-dnd";
+import { Container, Draggable } from "vue-smooth-dnd-next";
 export default {
   name: "app",
   components: { Container, Draggable },

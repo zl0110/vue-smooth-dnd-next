@@ -1,0 +1,49 @@
+name: 部署示例项目到 GitHub Pages
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v3
+
+      - name: 设置 Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: 安装依赖
+        run: |
+          npm ci
+          cd packages/example
+          npm ci
+
+      - name: 构建示例项目
+        run: |
+          cd packages/example
+          npm run build
+
+      - name: 设置 Pages
+        uses: actions/configure-pages@v3
+
+      - name: 上传构建结果
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: './packages/example/dist'
+
+      - name: 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+
+      - name: 输出部署 URL
+        run: echo "部署成功！访问 URL：${{ steps.deployment.outputs.page_url }}"

@@ -1,12 +1,12 @@
 {
-  "name": "vue3-smooth-dnd",
-  "version": "0.0.5",
+  "name": "vue-smooth-dnd-next",
+  "version": "0.0.1",
   "description": "Vue 3 wrappers for smooth-dnd library",
   "author": "Gilbert Ndresaj",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gilnd/vue3-smooth-dnd"
+    "url": "git+https://github.com/zl0110/vue-smooth-dnd-next"
   },
   "keywords": [
     "Vue 3",
@@ -22,9 +22,9 @@
     "dnd",
     "smooth-dnd"
   ],
-  "module": "dist/vue3-smooth-dnd.esm.js",
-  "main": "dist/vue3-smooth-dnd.js",
-  "unpkg": "dist/vue3-smooth-dnd.global.js",
+  "module": "dist/vue-smooth-dnd-next.esm.js",
+  "main": "dist/vue-smooth-dnd-next.js",
+  "unpkg": "dist/vue-smooth-dnd-next.global.js",
   "files": [
     "dist/"
   ],
@@ -33,7 +33,7 @@
     "build:watch": "rollup -c -w"
   },
   "dependencies": {
-    "smooth-dnd": "^0.12.1"
+    "smooth-dnd-next": "^0.13.0"
   },
   "peerDependencies": {
     "vue": "^3.0.11"

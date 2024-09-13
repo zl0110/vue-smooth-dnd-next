@@ -1286,10 +1286,10 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
-smooth-dnd@^0.12.1:
-  version "0.12.1"
-  resolved "https://registry.yarnpkg.com/smooth-dnd/-/smooth-dnd-0.12.1.tgz#cdb44c972355659e32770368b29b6a80e0ed96f1"
-  integrity sha512-Dndj/MOG7VP83mvzfGCLGzV2HuK1lWachMtWl/Iuk6zV7noDycIBnflwaPuDzoaapEl3Pc4+ybJArkkx9sxPZg==
+smooth-dnd-next@^0.13.0:
+  version "0.13.0"
+  resolved "https://registry.npmjs.org/smooth-dnd-next/-/smooth-dnd-next-0.13.0.tgz#5954e580b6a1da16c4428b3e33a520be078d0376"
+  integrity sha512-M9u8aXopXFYooXF4rVQ7TSrTPPKSHIN8CjmDFFhVEypxaAcIHxNjOcNFblJuvAtjF2oh84QXGM6nKKB/BU/2yA==
 
 sort-keys@^1.0.0:
   version "1.1.2"
@@ -1434,13 +1434,6 @@ vue-router@^4.0.8:
   integrity sha512-42mWSQaH7CCBQDspQTHv63f34VEnZC20g9QNK4WJ/zW8SdIUeT6TQ2i/78fjF/pVBUPLBWrGhvB7uDnaz7O/pA==
   dependencies:
     "@vue/devtools-api" "^6.0.0-beta.10"
-
-vue3-smooth-dnd@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/vue3-smooth-dnd/-/vue3-smooth-dnd-0.0.4.tgz#74b6838e7b361ce443cea784595e0a96b1ec4985"
-  integrity sha512-aPfPnUcF7cRlX/5pJeqam51NltzW5qsQNiJuAY/s73nJ9/yRKNpNNOItjpK11GusEkiK957Uf+e8ERUCabapSg==
-  dependencies:
-    smooth-dnd "^0.12.1"
 
 vue@^3.0.11:
   version "3.0.11"

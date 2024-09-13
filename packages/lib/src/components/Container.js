@@ -1,5 +1,5 @@
 import { defineComponent, h } from 'vue';
-import { smoothDnD, dropHandlers } from 'smooth-dnd';
+import { smoothDnD, dropHandlers } from 'smooth-dnd-next';
 import { getTagProps, validateTagProp } from '../utils/utils';
 
 smoothDnD.dropHandler = dropHandlers.reactDropHandler().handler;

@@ -1,7 +1,7 @@
 {
   "name": "example",
   "version": "0.0.1",
-  "homepage": "http://gilnd.github.io/vue3-smooth-dnd",
+  "homepage": "https://github.com/zl0110/vue-smooth-dnd-next",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -14,7 +14,7 @@
     "@heroicons/vue": "^1.0.1",
     "vue": "^3.2.47",
     "vue-router": "^4.0.8",
-    "vue3-smooth-dnd": "^0.0.4",
+    "vue-smooth-dnd-next": "^0.0.1",
     "vuex": "^4.0.1"
   },
   "devDependencies": {

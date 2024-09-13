@@ -1,5 +1,5 @@
 import { defineComponent, h } from 'vue';
-import { constants } from 'smooth-dnd';
+import { constants } from 'smooth-dnd-next';
 import { getTagProps, validateTagProp } from '../utils/utils';
 
 export default defineComponent({
