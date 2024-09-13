@@ -15,7 +15,7 @@ export default [{
       }, {
         file: pkg.unpkg,
         format: 'umd',
-        name: 'Vue3SmoothDnD',
+        name: 'VueSmoothDnDNext',
         sourcemap: true
       }
     ]
