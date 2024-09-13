@@ -10,13 +10,15 @@ export default defineComponent({
       default: 'div'
     },
   },
-  render: function () {
-    //wrap child
-    const tagProps = getTagProps(this, constants.wrapperClass);
-    return h(
-      tagProps.value,
-      Object.assign({}, tagProps.props),
-      this.$slots.default()
-    );
+  setup(props, {slots}) {
+    return () => {
+      //wrap child
+      const tagProps = getTagProps(props.tag, constants.wrapperClass);
+      return h(
+          tagProps.value,
+          props,
+          slots.default()
+      );
+    }
   }
 });

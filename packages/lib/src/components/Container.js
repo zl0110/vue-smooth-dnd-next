@@ -1,4 +1,4 @@
-import { defineComponent, h } from 'vue';
+import { defineComponent, h, ref, onMounted, onUnmounted } from 'vue';
 import { smoothDnD, dropHandlers } from 'smooth-dnd-next';
 import { getTagProps, validateTagProp } from '../utils/utils';
 
@@ -16,27 +16,6 @@ const eventEmitterMap = {
 
 export default defineComponent({
   name: 'Container',
-  mounted () {
-    // emit events
-    const options = Object.assign({}, this.$props);
-    for (const key in eventEmitterMap) {
-      options[eventEmitterMap[key]] = (props) => {
-        this.$emit(key, props);
-      }
-    }
-    this.containerElement = this.$refs.container || this.$el;
-    this.container = smoothDnD(this.containerElement, options);
-  },
-  unmounted () {
-    if (this.container) {
-      try {
-        this.container.dispose();
-      } catch {
-        // ignore
-      }
-    }
-  },
-  emits: ['drop', 'drag-start', 'drag-end', 'drag-enter', 'drag-leave', 'drop-ready' ],
   props: {
     orientation: { type: String, default: 'vertical' },
     removeOnDropOut: { type: Boolean, default: false },
@@ -60,12 +39,43 @@ export default defineComponent({
       default: 'div',
     }
   },
-  render(){
-    const tagProps = getTagProps(this);
-    return h(
+  emits: ['drop', 'drag-start', 'drag-end', 'drag-enter', 'drag-leave', 'drop-ready' ],
+  setup(props, { emit, slots }) {
+    const containerRef = ref(null);
+    let container = null;
+
+    onMounted(() => {
+      const options = { ...props };
+      for (const key in eventEmitterMap) {
+        options[eventEmitterMap[key]] = (eventProps) => {
+          emit(key, eventProps);
+        };
+      }
+
+      if (containerRef.value) {
+        container = smoothDnD(containerRef.value, options);
+      }
+    });
+
+    onUnmounted(() => {
+      if (container) {
+        try {
+          container.dispose();
+        } catch {
+          // ignore
+        }
+      }
+    });
+
+    const tagProps = getTagProps(props.tag);
+
+    return () => h(
       tagProps.value,
-      Object.assign({}, { ref: 'container' }, tagProps.props),
-      this.$slots.default(),
+      {
+        ...props,
+        ref:containerRef
+      },
+      slots.default()
     );
   }
 });

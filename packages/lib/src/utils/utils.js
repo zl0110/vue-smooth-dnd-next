@@ -1,6 +1,6 @@
 /**
  * Checks if tag or tag.value (ref) is string function or object
- * @param {*} tag 
+ * @param {*} tag
  * @returns boolean
  */
 export function validateTagProp (tag) {
@@ -20,8 +20,7 @@ export function validateTagProp (tag) {
   return true;
 }
 
-export function getTagProps (ctx, tagClasses) {
-  const tag = ctx.$props.tag;
+export function getTagProps (tag, tagClasses) {
   if (tag) {
     if (typeof tag === 'string') {
       const result = { value: tag };

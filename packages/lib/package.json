@@ -1,6 +1,6 @@
 {
   "name": "vue-smooth-dnd-next",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "Vue 3 wrappers for smooth-dnd library",
   "author": "Gilbert Ndresaj",
   "license": "MIT",
@@ -33,13 +33,13 @@
     "build:watch": "rollup -c -w"
   },
   "dependencies": {
-    "smooth-dnd-next": "^0.13.0"
+    "smooth-dnd-next": "^0.14.0"
   },
   "peerDependencies": {
-    "vue": "^3.0.11"
+    "vue": "^3.5.4"
   },
   "devDependencies": {
     "rollup": "^2.43.0",
-    "vue": "^3.0.11"
+    "vue": "^3.5.4"
   }
 }
