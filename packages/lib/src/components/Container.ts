@@ -1,5 +1,5 @@
-import { defineComponent, h, ref, onMounted, onUnmounted } from 'vue';
-import { smoothDnD, dropHandlers } from 'smooth-dnd-next';
+import { defineComponent, h, ref, onMounted, onUnmounted, PropType } from 'vue';
+import { smoothDnD, dropHandlers, ContainerOptions } from 'smooth-dnd-next';
 import { getTagProps, validateTagProp } from '../utils/utils';
 
 smoothDnD.dropHandler = dropHandlers.reactDropHandler().handler;
@@ -12,7 +12,7 @@ const eventEmitterMap = {
   'drag-enter': 'onDragEnter',
   'drag-leave': 'onDragLeave',
   'drop-ready': 'onDropReady'
-};
+} as const;
 
 export default defineComponent({
   name: 'Container',
@@ -21,19 +21,19 @@ export default defineComponent({
     removeOnDropOut: { type: Boolean, default: false },
     autoScrollEnabled: { type: Boolean, default: true },
     animationDuration: { type: Number, default: 250 },
-    behaviour: String,
+    behaviour: String as PropType<ContainerOptions['behaviour']>,
     groupName: String,
     dragHandleSelector: String,
     nonDragAreaSelector: String,
-    lockAxis: String,
+    lockAxis: String as PropType<ContainerOptions['lockAxis']>,
     dragClass: String,
     dropClass: String,
     dragBeginDelay: Number,
-    getChildPayload: Function,
-    shouldAnimateDrop: Function,
-    shouldAcceptDrop: Function,
-    getGhostParent: Function,
-    dropPlaceholder: [Object, Boolean],
+    getChildPayload: Function as PropType<ContainerOptions['getChildPayload']>,
+    shouldAnimateDrop: Function as PropType<ContainerOptions['shouldAnimateDrop']>,
+    shouldAcceptDrop: Function as PropType<ContainerOptions['shouldAcceptDrop']>,
+    getGhostParent: Function as PropType<ContainerOptions['getGhostParent']>,
+    dropPlaceholder: [Object, Boolean] as PropType<ContainerOptions['dropPlaceholder']>,
     tag: {
       validator: validateTagProp,
       default: 'div',
@@ -41,15 +41,18 @@ export default defineComponent({
   },
   emits: ['drop', 'drag-start', 'drag-end', 'drag-enter', 'drag-leave', 'drop-ready' ],
   setup(props, { emit, slots }) {
-    const containerRef = ref(null);
-    let container = null;
+    const containerRef = ref<HTMLElement | null>(null);
+    let container: ReturnType<typeof smoothDnD> | null = null;
 
     onMounted(() => {
-      const options = { ...props };
+      const options: ContainerOptions = { ...props } as ContainerOptions;
       for (const key in eventEmitterMap) {
-        options[eventEmitterMap[key]] = (eventProps) => {
-          emit(key, eventProps);
-        };
+        const eventKey = key as keyof typeof eventEmitterMap;
+        if(options[eventEmitterMap[eventKey]]) {
+            (options[eventEmitterMap[eventKey]] as any) = (eventProps: any) => {
+                emit(eventKey, eventProps);
+            }
+        }
       }
 
       if (containerRef.value) {
@@ -62,20 +65,21 @@ export default defineComponent({
         try {
           container.dispose();
         } catch {
-          // ignore
+          console.error('Error disposing container');
         }
       }
     });
 
-    const tagProps = getTagProps(props.tag);
+    const tagProps = getTagProps(props);
 
     return () => h(
       tagProps.value,
       {
+        ...tagProps.props,
         ...props,
-        ref:containerRef
+        ref: containerRef
       },
-      slots.default()
+      slots.default!()
     );
   }
 });
