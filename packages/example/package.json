@@ -14,7 +14,7 @@
     "@heroicons/vue": "^1.0.1",
     "vue": "^3.5.5",
     "vue-router": "^4.0.8",
-    "vue-smooth-dnd-next": "^0.0.4",
+    "vue-smooth-dnd-next": "^0.0.6",
     "vuex": "^4.0.1"
   },
   "devDependencies": {
