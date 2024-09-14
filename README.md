@@ -6,7 +6,7 @@
   <a href="https://github.com/zl0110/vue-smooth-dnd-next" target="__blank"><b>Live demo</b></a>
 </p>
 
-Forked from <a href="https://github.com/gilnd/vue3-smooth-dnd">vue3-smooth-dnd</a>, **fixed the memory leak issue**.
+Forked from <a href="https://github.com/gilnd/vue3-smooth-dnd">vue3-smooth-dnd</a>, **fixed the memory leak issue and added TypeScript support**.
 
 > This Vue 3 wrapper for [smooth-dnd](https://github.com/kutlugsahin/smooth-dnd) is forked from the original author's [Vue 2 wrapper](https://github.com/kutlugsahin/vue-smooth-dnd) and fixes the memory leak issue.
 
