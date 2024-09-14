@@ -4,6 +4,7 @@
   "description": "Vue 3 wrappers for smooth-dnd library",
   "author": "Gilbert Ndresaj",
   "license": "MIT",
+  "type":"module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zl0110/vue-smooth-dnd-next"
@@ -22,10 +23,16 @@
     "dnd",
     "smooth-dnd"
   ],
-  "module": "dist/vue-smooth-dnd-next.mjs",
-  "main": "dist/vue-smooth-dnd-next.js",
-  "unpkg": "dist/vue-smooth-dnd-next.umd.js",
-  "types": "dist/main.d.ts",
+  "main": "./dist/vue-smooth-dnd-next.cjs.js",
+  "module": "./dist/vue-smooth-dnd-next.es.js",
+  "unpkg": "./dist/vue-smooth-dnd-next.umd.js",
+  "types": "./dist/main.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/vue-smooth-dnd-next.es.js",
+      "require": "./dist/vue-smooth-dnd-next.cjs.js"
+    }
+  },
   "files": [
     "dist/"
   ],
