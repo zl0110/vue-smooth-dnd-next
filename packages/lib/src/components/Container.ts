@@ -46,13 +46,12 @@ export default defineComponent({
 
     onMounted(() => {
       const options: ContainerOptions = { ...props } as ContainerOptions;
-      for (const key in eventEmitterMap) {
-        const eventKey = key as keyof typeof eventEmitterMap;
-        if(options[eventEmitterMap[eventKey]]) {
-            (options[eventEmitterMap[eventKey]] as any) = (eventProps: any) => {
-                emit(eventKey, eventProps);
-            }
-        }
+      
+      // 修改这部分代码
+      for (const [eventName, optionKey] of Object.entries(eventEmitterMap)) {
+        options[optionKey] = ((eventProps: any) => {
+          emit(eventName as keyof typeof eventEmitterMap, eventProps);
+        }) as any;
       }
 
       if (containerRef.value) {
